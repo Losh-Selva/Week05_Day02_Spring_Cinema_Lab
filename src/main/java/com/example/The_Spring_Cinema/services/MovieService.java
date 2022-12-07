@@ -18,32 +18,33 @@ public class MovieService {
     public MovieService() {
     }
 
-        //List All Movies
-        public List<Movie> getAll() {
-            return movieRepository.findAll();
-        }
-        //Get Movie by ID
-        public Optional<Movie> getMovieById (int id){
-            return movieRepository.findById(id);
-        }
+    //List All Movies
+    public List<Movie> getAll() {
+        return movieRepository.findAll();
+    }
 
-        //Save Movies
-        public Movie saveMovie(){
-            return movieRepository.save(movie);
-            }
-        //Deleting movie with reply method
-        public Reply deleteMovie(){
+    //Get Movie by ID
+    public Optional<Movie> getMovieById(int id) {
+        return movieRepository.findById(id);
+    }
+
+    //Save Movies
+    public Movie saveMovie() {
+        return movieRepository.save(movie);
+    }
+
+    //Deleting movie with reply method
+    public Reply deleteMovie() {
         Reply reply;
-            movieRepository.delete(movie);
-                return new Reply(
-                    true,
-                    "Successfully deleted movie"
-                );
-            }
-        public Movie updateMovie(int id, String title){
-        Movie changedMovie;
-          movieRepository.findById(movie.getId());
-          movie.setTitle(movie.getTitle());
-            return movieRepository.save(movie);
-        }
+        movieRepository.delete(movie);
+        return new Reply(
+                true,
+                "Successfully deleted movie"
+        );
+    }
+
+    public Movie updateMovie(int id, String title) {
+        movie.setTitle(String.valueOf(movieRepository.findById(movie.getId())));
+        return movieRepository.save(movie);
+    }
 }
